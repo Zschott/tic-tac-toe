@@ -1,53 +1,45 @@
-function gameBoard(){
-    const rows = 3
-    const columns = 3
-    const board = []
-}
+const s1 = {}
+const s2 = {}
+const s3 = {}
+const s4 = {}
+const s5 = {}
+const s6 = {}
+const s7 = {}
+const s8 = {}
+const s9 = {}
 
-/*function player(box1, box2, box3,
-                 box4, box5, box6,
-                 box7, box8, box9){
-    const box1 = false
-    const box2 = false
-    const box3 = false
-    const box4 = false
-    const box5 = false
-    const box6 = false
-    const box7 = false
-    const box8 = false
-    const box9 = false
-    return {box1, box2, box3, box4, box5, box6, box7, box8, box9}
-}
-*/
+const b1 = document.getElementById('s1')
 
-const button1 = document.getElementById('b1')
-const button2 = document.getElementById('b2')
-
-const players = [player1]
-
-const player1 = {
-    box1: false,
-    box2: false,
-    box3: false,
-    box4: false,
-    box5: false,
-    box6: false,
-    box7: false,
-    box8: false,
-    box9: false
-}
-
-function test(player){
-    player.box1 = true
-    player.box2 = true
-    player.box3 = true
-
-    if(player.box1 && player.box2 && player.box3){
-        console.log("Worked")
-    } else {
-        console.log("Didn't work")
+function setKey(obj){
+    obj.player = 'X'
+    if((s1.player && s2.player && s3.player) ||
+        (s4.player && s5.player && s6.player) ||
+        (s7.player && s8.player && s9.player) ||
+        (s1.player && s4.player && s7.player) ||
+        (s2.player && s5.player && s8.player) ||
+        (s3.player && s6.player && s9.player) ||
+        (s1.player && s5.player && s9.player) ||
+        (s7.player && s5.player && s3.player)){
+        console.log('good test')
     }
 }
+
+function changeColor(obj){
+    console.log(obj)
+    //const button = obj.getElementById(`${obj}`)
+    //button.setAttribute('class', 'red')
+}
+
+function btnStuff(obj){
+    changeColor(obj)
+    setKey(obj)
+}
+
+// 123, 456, 789, 147, 258, 369, 159, 753
+
+const squares = [s1,s2, s3, s4, s5, s6, s7, s8, s9]
+
+
 
 /* Planning
 Create game round {
@@ -84,4 +76,12 @@ Repeat turns until a player gets 3 buttons in a row
     Winning values:
         123, 456, 789, 147, 258, 369, 159, 753
 OR End the game in a draw if no winners
+
+
+Recommended Setup According to TOP
+gameboard array
+
+players object
+
+game object
 */
