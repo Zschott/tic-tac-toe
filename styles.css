@@ -19,6 +19,10 @@
     background-color: red;
 }
 
+.green{
+    background-color: green;
+}
+
 #test{
     height: 50px;
     width: 50px;

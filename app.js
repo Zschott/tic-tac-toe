@@ -11,7 +11,16 @@ const s9 = {}
 const b1 = document.getElementById('s1')
 
 function setKey(obj){
-    obj.player = 'X'
+    
+    if(game.activePlayer == player1){
+        obj.player = '1'
+    } else {
+        obj.player = '2'
+    }
+   checkGameWinner()
+    changeGame()
+   
+   /*
     if((s1.player && s2.player && s3.player) ||
         (s4.player && s5.player && s6.player) ||
         (s7.player && s8.player && s9.player) ||
@@ -22,24 +31,61 @@ function setKey(obj){
         (s7.player && s5.player && s3.player)){
         console.log('good test')
     }
+    */
 }
 
-function changeColor(obj){
-    console.log(obj)
-    //const button = obj.getElementById(`${obj}`)
-    //button.setAttribute('class', 'red')
+function changeColor(string){
+    if (game.activePlayer == player1){
+    document.getElementById(`${string}`).setAttribute('class', 'red')
+    document.getElementById(`${string}`).textContent = 'X'
+    } else {
+    document.getElementById(`${string}`).setAttribute('class', 'green')
+    document.getElementById(`${string}`).textContent = 'O'
+    }
 }
 
-function btnStuff(obj){
-    changeColor(obj)
+function setButton(string, obj){
+    changeColor(string)
     setKey(obj)
 }
 
-// 123, 456, 789, 147, 258, 369, 159, 753
-
 const squares = [s1,s2, s3, s4, s5, s6, s7, s8, s9]
 
+const player1 = {player: 'X'}
+const player2 = {player: 'O'}
 
+players = [player1, player2]
+
+const game = {
+    turn: 1,
+    activePlayer: player1
+}
+
+
+function changeGame(){
+    game.turn += 1
+
+    if (game.activePlayer == player1){
+        game.activePlayer = player2
+    } else {
+        game.activePlayer = player1
+    }
+}
+
+function checkGameWinner(){
+    for (i=1; i<=2; i++){
+        if((s1.player == i && s2.player == i && s3.player == i) ||
+        (s4.player == i && s5.player == i && s6.player == i) ||
+        (s7.player == i && s8.player == i && s9.player == i) ||
+        (s1.player == i && s4.player == i && s7.player == i) ||
+        (s2.player == i && s5.player == i && s8.player == i) ||
+        (s3.player == i && s6.player == i && s9.player == i) ||
+        (s1.player == i && s5.player == i && s9.player == i) ||
+        (s7.player == i && s5.player == i && s3.player == i)){
+        console.log(`Winner: Player ${i}`)
+        }
+    }
+}
 
 /* Planning
 Create game round {
